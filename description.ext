@@ -1,0 +1,80 @@
+
+
+setViewDistance = 10000;
+disabledAI = 1;
+joinUnassigned = 1;
+aiKills  = 1;
+
+respawn = 2;
+respawnDelay = 20;
+respawnVehicleDelay = 30;
+respawnTemplates[] = {"MenuPosition","MenuInventory","Tickets"};
+respawnTemplatesVirtual[] = {};
+
+
+class Params
+{
+	class CuratorGodMode
+	{
+		title = $STR_A3_MP_ZGM_m11.Altis_Params_CuratorUnlock;
+		values[] = {0,1};
+		texts[] = {$STR_DISABLED,$STR_ENABLED};
+		default = 1;
+	};
+	class CuratorModeratorRights
+	{
+		title = $STR_A3_MP_ZGM_m11.Altis_Params_CuratorModeratorRights;
+		values[] = {-1,0,1,2};
+		texts[] = {
+			"Cannot create and edit anything (spectating only)", //--- ToDo: Localize
+			$STR_A3_MP_ZGM_m11.Altis_Params_CuratorModeratorRights_0,
+			$STR_A3_MP_ZGM_m11.Altis_Params_CuratorModeratorRights_1,
+			$STR_A3_MP_ZGM_m11.Altis_Params_CuratorModeratorRights_2
+		};
+		default = 1;
+	};
+#ifdef _PARAMTYPE
+	class Type
+	{
+		title = $STR_DISP_ARCGRP_TYPE;
+		values[] = {0,1};
+		texts[] = {$STR_A3_CfgMPGameTypes_Coop_name_0,$STR_A3_CfgMPGameTypes_DM_name_0};
+		default = 0;
+		isGlobal = 1;
+		file = "paramType.sqf";
+	};
+#endif
+	class PlayerEditingAreaSize
+	{
+		title = $STR_A3_MP_ZGM_m11.Altis_Params_PlayerEditingAreaSize;
+		values[] = {0,100,200,500,1000};
+		texts[] = {0,100,200,500,1000};
+		default = 0;
+	};
+#ifndef GUERFRIENDLY_DEFAULT
+	#define GUERFRIENDLY_DEFAULT	-1
+#endif
+	class GuerFriendly
+	{
+		title = $STR_DISP_INTEL_EDIT_GUERILLA;
+		values[] = {-1,1,0,2};
+		texts[] = {
+			$STR_DISP_INTEL_NONE_FRIENDLY,
+			$STR_DISP_INTEL_WEST_FRIENDLY,
+			$STR_DISP_INTEL_EAST_FRIENDLY,
+			$STR_DISP_INTEL_BOTH_FRIENDLY
+		};
+		default = GUERFRIENDLY_DEFAULT;
+		function = "BIS_fnc_paramGuerFriendly";
+	};
+#ifndef DEBUGCONSOLE_DEFAULT
+	#define DEBUGCONSOLE_DEFAULT	0
+#endif
+	class DebugConsole
+	{
+		title = $STR_A3_paramDebugConsole_title;
+		values[] = {0,1};
+		texts[] = {$STR_DISABLED,$STR_ENABLED};
+		default = 1;
+	};
+};
