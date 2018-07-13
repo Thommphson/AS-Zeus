@@ -1,5 +1,14 @@
 
 
+briefingName	= "Zeus 240+2 Mastering Altis (Vanilla)";
+overviewPicture = "loading.paa";
+overviewText	= "Arma Stuff Altis Zeus - No Mod Parameters <br/><br/>80 slots per faction, No Civs 2 Zeus <br/>Revive turned off by default, can be changed in the server parameters <br/>Moderator given full access by default, can be changed in the server parameters";
+
+author			= "Thommphson";
+OnLoadName		= "Zeus 240+2 Master Altis";
+OnLoadMission	= "Nothing in this scenario is predetermined. No playthrough is the same. Every story, location, and experience is invented by the Game Master. By ZEUS.";
+loadScreen		= "loading.paa";
+
 setViewDistance = 10000;
 disabledAI = 1;
 joinUnassigned = 1;
@@ -14,6 +23,14 @@ respawnTemplatesVirtual[] = {};
 
 class Params
 {
+	//Zeus Parameters below here, all original
+	class paramsComment1 {
+		title = "===============Zeus Settings===============";
+		values[] = {-99999};
+		default = -99999;
+		texts[] = {""};
+	};
+	
 	class CuratorGodMode
 	{
 		title = $STR_A3_MP_ZGM_m11.Altis_Params_CuratorUnlock;
@@ -33,7 +50,8 @@ class Params
 		};
 		default = 1;
 	};
-#ifdef _PARAMTYPE
+	
+	#ifdef _PARAMTYPE
 	class Type
 	{
 		title = $STR_DISP_ARCGRP_TYPE;
@@ -43,7 +61,8 @@ class Params
 		isGlobal = 1;
 		file = "paramType.sqf";
 	};
-#endif
+	#endif
+	
 	class PlayerEditingAreaSize
 	{
 		title = $STR_A3_MP_ZGM_m11.Altis_Params_PlayerEditingAreaSize;
@@ -51,9 +70,11 @@ class Params
 		texts[] = {0,100,200,500,1000};
 		default = 0;
 	};
-#ifndef GUERFRIENDLY_DEFAULT
-	#define GUERFRIENDLY_DEFAULT	-1
-#endif
+	
+	#ifndef GUERFRIENDLY_DEFAULT
+		#define GUERFRIENDLY_DEFAULT	-1
+	#endif
+	
 	class GuerFriendly
 	{
 		title = $STR_DISP_INTEL_EDIT_GUERILLA;
@@ -67,14 +88,204 @@ class Params
 		default = GUERFRIENDLY_DEFAULT;
 		function = "BIS_fnc_paramGuerFriendly";
 	};
-#ifndef DEBUGCONSOLE_DEFAULT
-	#define DEBUGCONSOLE_DEFAULT	0
-#endif
+	
+	#ifndef DEBUGCONSOLE_DEFAULT
+		#define DEBUGCONSOLE_DEFAULT	0
+	#endif
+	
 	class DebugConsole
 	{
 		title = $STR_A3_paramDebugConsole_title;
 		values[] = {0,1};
 		texts[] = {$STR_DISABLED,$STR_ENABLED};
 		default = 1;
+	};
+	
+	//Revive Parameters set below here, pulled from paramRevive.inc manually and reordered+edited to actually make sense
+	class paramsComment2 {
+		title = "===============Revive Settings===============";
+		values[] = {-99999};
+		default = -99999;
+		texts[] = {""};
+	};
+	
+	class ReviveMode
+	{
+		title = $STR_A3_ReviveMode;
+		isGlobal = 1;
+
+		values[] = {
+			0,
+			1
+		};
+		texts[] = {
+			$STR_A3_Disabled,
+			$STR_A3_EnabledForAllPlayers
+		};
+		default = 1;
+		function = "bis_fnc_paramReviveMode";
+	};
+	
+	class ReviveRequiredTrait
+	{
+		title = $STR_A3_RequiredTrait;
+		isGlobal = 1;
+
+		values[] = {
+			0,
+			1
+		};
+		texts[] = {
+			$STR_A3_None,
+			$STR_A3_Medic
+		};
+		default = 0;
+		function = "bis_fnc_paramReviveRequiredTrait";
+	};
+	
+	class ReviveRequiredItems
+	{
+		title = $STR_A3_RequiredItems;
+		isGlobal = 1;
+
+		values[] = {
+			0,
+			1,
+			2
+		};
+		texts[] = {
+			$STR_A3_None,
+			$STR_A3_Medikit,
+			$STR_A3_FirstAidKitOrMedikit
+		};
+		default = 2;
+		function = "bis_fnc_paramReviveRequiredItems";
+	};
+	
+	class UnconsciousStateMode
+	{
+		title = $STR_A3_IncapacitationMode;
+		isGlobal = 1;
+
+		values[] = {
+			0,
+			1
+		};
+		texts[] = {
+			$STR_A3_Basic,
+			$STR_A3_Advanced
+		};
+		default = 0;
+		function = "bis_fnc_paramReviveUnconsciousStateMode";
+	};
+	
+	class ReviveDuration
+	{
+		title = $STR_A3_ReviveDuration;
+		isGlobal = 1;
+
+		values[] = {
+			6,
+			8,
+			10,
+			12,
+			15,
+			20,
+			25,
+			30
+		};
+		texts[] = {
+			"6 seconds",
+			"8 seconds",
+			"10 seconds",
+			"12 seconds",
+			"15 seconds",
+			"20 seconds",
+			"25 seconds",
+			"30 seconds"
+		};
+		default = 6;
+		function = "bis_fnc_paramReviveDuration";
+	};
+
+	class ReviveMedicSpeedMultiplier
+	{
+		title = $STR_A3_RequiredTrait_MedicSpeedMultiplier;
+		isGlobal = 1;
+
+		values[] = {
+			1,
+			1.5,
+			2,
+			2.5,
+			3
+		};
+		texts[] = {
+			"1x",
+			"1.5x",
+			"2x",
+			"2.5x",
+			"3x"
+		};
+		default = 2;
+		function = "bis_fnc_paramReviveMedicSpeedMultiplier";
+	};
+
+	class ReviveBleedOutDuration
+	{
+		title = $STR_A3_BleedOutDuration;
+		isGlobal = 1;
+
+		values[] = {
+			10,
+			15,
+			20,
+			30,
+			45,
+			60,
+			90,
+			180
+		};
+		texts[] = {
+			"10 seconds",
+			"15 seconds",
+			"20 seconds",
+			"30 seconds",
+			"45 seconds",
+			"60 seconds",
+			"90 seconds",
+			"180 seconds"
+		};
+		default = 60;
+		function = "bis_fnc_paramReviveBleedOutDuration";
+	};
+
+	class ReviveForceRespawnDuration
+	{
+		title = $STR_A3_ForceRespawnDuration;
+		isGlobal = 1;
+
+		values[] = {
+			3,
+			4,
+			5,
+			6,
+			7,
+			8,
+			9,
+			10
+		};
+		texts[] = {
+			"3 seconds",
+			"4 seconds",
+			"5 seconds",
+			"6 seconds",
+			"7 seconds",
+			"8 seconds",
+			"9 seconds",
+			"10 seconds"
+		};
+		default = 3;
+		function = "bis_fnc_paramReviveForceRespawnDuration";
 	};
 };
