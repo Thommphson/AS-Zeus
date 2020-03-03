@@ -1,4 +1,14 @@
+// https://community.bistudio.com/wiki/Description.ext
 
+onLoadName = ""; // TODO: add type mission name inside quotations: "Operation Delta Steel", "Operation Coffeehouse", "Operation Houston", "Operation Yellow Snow", etc.
+onLoadMission = ""; // TODO: add mission description shown in loading screen
+// onLoadMissionTime = 1; 
+// loadScreen = "";
+briefingName = ""; // TODO: add name of mission in #missions screen
+
+author = ""; // TODO: add friday host name
+
+// !! DONT CHANGE ANYTHING BENEATH THIS !!
 
 briefingName	= "Zeus 240+2 Mastering Altis (Vanilla)";
 overviewPicture = "loading.paa";
@@ -15,7 +25,7 @@ joinUnassigned = 1;
 aiKills  = 1;
 
 respawn = 2;
-respawnDelay = 20;
+respawnDelay = 1;
 respawnVehicleDelay = 30;
 respawnTemplates[] = {"MenuPosition","MenuInventory","Tickets"};
 respawnTemplatesVirtual[] = {};
