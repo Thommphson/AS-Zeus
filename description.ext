@@ -123,7 +123,7 @@ class Params
 			$STR_A3_Disabled,
 			$STR_A3_EnabledForAllPlayers
 		};
-		default = 1;
+		default = 0;
 		function = "bis_fnc_paramReviveMode";
 	};
 	
