@@ -10,15 +10,6 @@ author = ""; // TODO: add friday host name
 
 // !! DONT CHANGE ANYTHING BENEATH THIS !!
 
-briefingName	= "Zeus 240+2 Mastering Altis (Vanilla)";
-overviewPicture = "loading.paa";
-overviewText	= "Arma Stuff Altis Zeus - No Mod Parameters <br/><br/>80 slots per faction, No Civs 2 Zeus <br/>Revive turned off by default, can be changed in the server parameters <br/>Moderator given full access by default, can be changed in the server parameters";
-
-author			= "Thommphson";
-OnLoadName		= "Zeus 240+2 Master Altis";
-OnLoadMission	= "Nothing in this scenario is predetermined. No playthrough is the same. Every story, location, and experience is invented by the Game Master. By ZEUS.";
-loadScreen		= "loading.paa";
-
 setViewDistance = 10000;
 disabledAI = 1;
 joinUnassigned = 1;
